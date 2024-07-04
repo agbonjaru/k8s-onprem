@@ -16,9 +16,6 @@ sudo apt install -y docker-ce
 sudo usermod -aG docker ${USER}
 newgrp docker
 
-# Install Docker
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Add Kubernetes GPG key and repository
 # curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
