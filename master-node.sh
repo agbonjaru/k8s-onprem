@@ -17,9 +17,6 @@ sudo apt install -y docker-ce
 sudo usermod -aG docker ${USER}
 newgrp docker
 
-# Install Docker
-sudo apt-get update
-sudo apt-get install -y docker-ce 
 
 
 # Add Kubernetes GPG key and repository
