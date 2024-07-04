@@ -4,13 +4,23 @@
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 
+
 # Add Docker GPG key and repository
+sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install -y docker-ce
+
+#add current user to docker group
+sudo usermod -aG docker ${USER}
+newgrp docker
 
 # Install Docker
 sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo apt-get install -y docker-ce 
+
 
 # Add Kubernetes GPG key and repository
 # apt-transport-https may be a dummy package; if so, you can skip that package
