@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Disable swap
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
 # Update packages and install necessary dependencies
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -38,9 +42,6 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
 
-# Disable swap
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 
 # Initialize Kubernetes cluster
