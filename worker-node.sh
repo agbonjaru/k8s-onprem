@@ -23,7 +23,7 @@ newgrp docker
 
 
 # apt-transport-https may be a dummy package; if so, you can skip that package
-sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates gpg
 
 # If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
 # sudo mkdir -p -m 755 /etc/apt/keyrings
