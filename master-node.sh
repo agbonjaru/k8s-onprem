@@ -21,7 +21,8 @@ newgrp docker
 
 # Add Kubernetes GPG key and repository
 # apt-transport-https may be a dummy package; if so, you can skip that package
-sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates gpg
 
 # If the directory `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
 # sudo mkdir -p -m 755 /etc/apt/keyrings
@@ -40,6 +41,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # Disable swap
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
 
 # Initialize Kubernetes cluster
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
