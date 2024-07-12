@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Disable swap
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
 # Update packages and install necessary dependencies
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -38,9 +42,7 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
-# Disable swap
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
 
 # Join worker node to the Kubernetes cluster (replace <MASTER_IP> with the IP address of your master node)
 # sudo kubeadm join <MASTER_IP>:6443 --token <TOKEN> --discovery-token-ca-cert-hash sha256:<HASH>
